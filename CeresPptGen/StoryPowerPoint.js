@@ -576,7 +576,7 @@ class StoryPowerPoint {
     //Customer Location
     slide.addImage({
       path:
-        'img/country.jpg',
+        'img/location.jpg',
       y: 6.8,
       x: 0.19,
       h: imageH,
