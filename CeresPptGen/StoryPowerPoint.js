@@ -39,6 +39,8 @@ class StoryPowerPoint {
     this.addNotesHeaders(slide, this.project);
     this.addNotesBodies(slide, this.project);
     this.addFooters(slide, this.project);
+    slide.addNotes('**Intended Audience** - Pillar reviews, Account Teams, FTA LT – This is to be part of our internal Flipbook.\nThis slide should ALWAYS be in place for any customer story. The following Technical slides may or may not be required, but this Business Impact Overview is always the starting point for any customer story being triggered.\n\nThe Technical slides to follow may be used to add context for various technical audiences. Several combinations of the Technical slides may be used to cater your story to the target audience. If the PG prefers to see buckets with challenges and associated learnings and impact, the final slide is this PPT may be ideal. If some prefers a higher-lever technical overview, then the first technical slide option would be better suited.\n\nCustomer Overview and Objective\nThis section needs to outline who the customer is, the customer’s objective, the "WHY" .. Why were they pursuing this change, and what was the ideal outcome? Tell a brief story around the Why and What – you should be able to pull a lot of this content from the Project Overview in Ceres or your scoping notes prior to project creation.\n\nAzure Solution Overview\nWork with your FTA Engineer to populate this section if you are unsure. Provide a high-level overview of the solution we helped them implement, as well as key services and components of the FTA delivery (ie, Governance discussions, Arch Design Review, over-the-shoulder working sessions, etc…)');
+
   }
 
   addMaster() {
@@ -65,13 +67,13 @@ class StoryPowerPoint {
 
     slide.addText(project.NominationCustomerName, {
       shape: this.pptx.shapes.RECTANGLE,
+      autoFit: true,
       y: 0.13,
       x: 1.2,
-      w: 5.2,
-      h: 0.8,
+      w: 5.4,
+      h: 0.6,
       color: this.COLOR_WHITE,
       fontFace: "Segoe UI Semibold",
-      fontSize: 24,
       align: "left",
       valign: "top",
     });
@@ -90,7 +92,7 @@ class StoryPowerPoint {
     });
     slide.addImage({
       path:
-        "https://cdn2.iconfinder.com/data/icons/metro-ui-icon-set/512/PowerPoint_15.png",
+      'img/quotes.png',
       y: 0.13,
       x: 6.65,
       w: 0.25,
@@ -257,7 +259,7 @@ class StoryPowerPoint {
 
     slide.addImage({
       path:
-        "https://cdn2.iconfinder.com/data/icons/metro-ui-icon-set/512/PowerPoint_15.png",
+        'img/acrchart.png',
       y: 4.28,
       x: 3.71,
       h: 2.32,
@@ -398,7 +400,7 @@ class StoryPowerPoint {
         y: 3,
         x: 8.51,
         w: 4.7,
-        h: height,
+        h: 2,
         shrinkText: true,
         fontFace: "Segoe UI",
         color: "FFFFFF",
@@ -438,7 +440,7 @@ class StoryPowerPoint {
         y: 4.4,
         x: 8.51,
         w: 4.7,
-        h: height,
+        h: 2,
         shrinkText: true,
         fontFace: "Segoe UI",
         color: "FFFFFF",
@@ -576,7 +578,7 @@ class StoryPowerPoint {
     //Customer Location
     slide.addImage({
       path:
-        'img/location.jpg',
+        'img/location.png',
       y: 6.8,
       x: 0.19,
       h: imageH,
@@ -602,7 +604,7 @@ class StoryPowerPoint {
 
     slide.addImage({
       path:
-      'img/duration.jpg',
+      'img/duration.png',
       y: 6.8,
       x: 3,
       h: imageH,
@@ -636,7 +638,7 @@ class StoryPowerPoint {
 
     slide.addImage({
       path:
-      'img/industry.jpg',
+      'img/industry.png',
       y: 6.8,
       x: 8.04,
       h: imageH,
@@ -662,7 +664,7 @@ class StoryPowerPoint {
 
     slide.addImage({
       path:
-      'img/segment.jpg',
+      'img/segment.png',
       y: 6.8,
       x: 10.63,
       h: imageH,
@@ -686,6 +688,8 @@ class StoryPowerPoint {
       }
     );
   }
+
+  
 
   dateFromUtc(utc) {
     //Preconditions
