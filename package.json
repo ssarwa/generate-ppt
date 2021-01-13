@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@azure/storage-blob": "^12.3.0",
+    "dateformat": "^4.4.1",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.0",
     "pptxgenjs": "^3.3.1"

@@ -1,4 +1,5 @@
 let PptxGenJS = require("pptxgenjs");
+var dateFormat = require("dateformat");
 
 class StoryPowerPoint {
   constructor(project) {
@@ -39,8 +40,9 @@ class StoryPowerPoint {
     this.addNotesHeaders(slide, this.project);
     this.addNotesBodies(slide, this.project);
     this.addFooters(slide, this.project);
-    slide.addNotes('**Intended Audience** - Pillar reviews, Account Teams, FTA LT – This is to be part of our internal Flipbook.\nThis slide should ALWAYS be in place for any customer story. The following Technical slides may or may not be required, but this Business Impact Overview is always the starting point for any customer story being triggered.\n\nThe Technical slides to follow may be used to add context for various technical audiences. Several combinations of the Technical slides may be used to cater your story to the target audience. If the PG prefers to see buckets with challenges and associated learnings and impact, the final slide is this PPT may be ideal. If some prefers a higher-lever technical overview, then the first technical slide option would be better suited.\n\nCustomer Overview and Objective\nThis section needs to outline who the customer is, the customer’s objective, the "WHY" .. Why were they pursuing this change, and what was the ideal outcome? Tell a brief story around the Why and What – you should be able to pull a lot of this content from the Project Overview in Ceres or your scoping notes prior to project creation.\n\nAzure Solution Overview\nWork with your FTA Engineer to populate this section if you are unsure. Provide a high-level overview of the solution we helped them implement, as well as key services and components of the FTA delivery (ie, Governance discussions, Arch Design Review, over-the-shoulder working sessions, etc…)');
-
+    slide.addNotes(
+      '**Intended Audience** - Pillar reviews, Account Teams, FTA LT – This is to be part of our internal Flipbook.\nThis slide should ALWAYS be in place for any customer story. The following Technical slides may or may not be required, but this Business Impact Overview is always the starting point for any customer story being triggered.\n\nThe Technical slides to follow may be used to add context for various technical audiences. Several combinations of the Technical slides may be used to cater your story to the target audience. If the PG prefers to see buckets with challenges and associated learnings and impact, the final slide is this PPT may be ideal. If some prefers a higher-lever technical overview, then the first technical slide option would be better suited.\n\nCustomer Overview and Objective\nThis section needs to outline who the customer is, the customer’s objective, the "WHY" .. Why were they pursuing this change, and what was the ideal outcome? Tell a brief story around the Why and What – you should be able to pull a lot of this content from the Project Overview in Ceres or your scoping notes prior to project creation.\n\nAzure Solution Overview\nWork with your FTA Engineer to populate this section if you are unsure. Provide a high-level overview of the solution we helped them implement, as well as key services and components of the FTA delivery (ie, Governance discussions, Arch Design Review, over-the-shoulder working sessions, etc…)'
+    );
   }
 
   addMaster() {
@@ -91,8 +93,7 @@ class StoryPowerPoint {
       italic: true,
     });
     slide.addImage({
-      path:
-      'img/quotes.png',
+      path: "img/quotes.png",
       y: 0.13,
       x: 6.65,
       w: 0.25,
@@ -258,8 +259,7 @@ class StoryPowerPoint {
     );
 
     slide.addImage({
-      path:
-        'img/acrchart.png',
+      path: "img/acrchart.png",
       y: 4.28,
       x: 3.71,
       h: 2.32,
@@ -560,6 +560,9 @@ class StoryPowerPoint {
     var imageH = 0.4;
     var imageW = 0.4;
 
+    var startDate = dateFormat(project.StartDate, "yyyy-mm-dd");
+    var endDate = dateFormat(project.EndDate, "yyyy-mm-dd");
+
     // footer wrapper and MS Confidential
     slide.addText("MICROSOFT CONFIDENTIAL - Internal Only", {
       shape: this.pptx.shapes.RECTANGLE,
@@ -577,8 +580,7 @@ class StoryPowerPoint {
 
     //Customer Location
     slide.addImage({
-      path:
-        'img/location.png',
+      path: "img/location.png",
       y: 6.8,
       x: 0.19,
       h: imageH,
@@ -603,8 +605,7 @@ class StoryPowerPoint {
     );
 
     slide.addImage({
-      path:
-      'img/duration.png',
+      path: "img/duration.png",
       y: 6.8,
       x: 3,
       h: imageH,
@@ -620,7 +621,7 @@ class StoryPowerPoint {
         },
         { text: "Project Duration: ", options: { bold: true } },
         {
-          text: project.StartDate + " – " + project.EndDate,
+          text: startDate + " – " + endDate,
           options: { bold: false },
         },
       ],
@@ -637,8 +638,7 @@ class StoryPowerPoint {
     );
 
     slide.addImage({
-      path:
-      'img/industry.png',
+      path: "img/industry.png",
       y: 6.8,
       x: 8.04,
       h: imageH,
@@ -663,8 +663,7 @@ class StoryPowerPoint {
     );
 
     slide.addImage({
-      path:
-      'img/segment.png',
+      path: "img/segment.png",
       y: 6.8,
       x: 10.63,
       h: imageH,
@@ -688,8 +687,6 @@ class StoryPowerPoint {
       }
     );
   }
-
-  
 
   dateFromUtc(utc) {
     //Preconditions
