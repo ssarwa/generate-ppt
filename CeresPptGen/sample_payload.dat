@@ -1,10 +1,11 @@
 {
-        "NominationCustomerName": "Customer Name",
-        "PhysicalLocation": "USA",
-        "QualifiedIndustry": "Civilian Government",
-        "QualifiedSegment": "Major Public Sector",
-        "ProjectTitle": "Data Platform Migration",
-        "StartDate": "2020-01-15 08:55:29.0000000 +00:00", //UTC
-        "EndDate": "2020-06-10 08:09:51.0000000 +00:00",   //UTC
-        "DurationOfProject": "147" //In days
+    "ProjectID": "f841b59e-eb59-4a72-a6bb-f7f258f5b9dd",
+    "NominationCustomerName": "Customer 1",
+    "PhysicalLocation": "United States",
+    "QualifiedIndustry": "Civilian Government",
+    "QualifiedSegment": "Small, Medium & Corporate Government",
+    "CustomerSolution": "Data Platform Modernization",
+    "StartDate": "2020-03-11 08:55:29.0000000 +00:00",
+    "EndDate": "2021-01-31 08:09:51.0000000 +00:00",
+    "DurationOfProject": "147"
 }

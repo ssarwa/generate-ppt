@@ -616,7 +616,7 @@ class StoryPowerPoint {
       [
         { text: "Customer Solution: ", options: { bold: true } },
         {
-          text: "<Insert Ceres Customer Solution>\n",
+          text: project.CustomerSolution + "\n",
           options: { bold: false },
         },
         { text: "Project Duration: ", options: { bold: true } },
