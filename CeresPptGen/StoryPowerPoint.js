@@ -29,7 +29,7 @@ class StoryPowerPoint {
 
     var today = new Date().toISOString();
     today = today.replace(new RegExp(":", "g"), "-");
-    this.filename = "FTA-CustomerStories-" + today + ".pptx";
+    this.filename = project.NominationCustomerName + "-" + today + ".pptx";
   }
 
   generate() {
