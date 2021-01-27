@@ -29,7 +29,7 @@ class StoryPowerPoint {
 
     var today = new Date().toISOString();
     today = today.replace(new RegExp(":", "g"), "-");
-    this.filename = project.NominationCustomerName + "-" + today + ".pptx";
+    this.filename = project.ProjectCustomerName + "-" + today + ".pptx";
   }
 
   generate() {
@@ -67,7 +67,7 @@ class StoryPowerPoint {
       line: { color: "FFFFFF", width: 0.5 },
     });
 
-    slide.addText(project.NominationCustomerName, {
+    slide.addText(project.ProjectCustomerName, {
       shape: this.pptx.shapes.RECTANGLE,
       autoFit: true,
       y: 0.13,
