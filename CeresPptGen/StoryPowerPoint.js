@@ -29,7 +29,8 @@ class StoryPowerPoint {
 
     var today = new Date().toISOString();
     today = today.replace(new RegExp(":", "g"), "-");
-    this.filename = project.ProjectCustomerName + "-" + today + ".pptx";
+    this.filename = project.ProjectCustomerName.replace(" ", "-") + "-" + today + ".pptx";
+  
   }
 
   generate() {
@@ -57,33 +58,34 @@ class StoryPowerPoint {
       shape: this.pptx.shapes.ROUNDED_RECTANGLE,
       y: 0.13,
       x: 0.12,
-      w: 1,
-      h: 0.8,
+      w: 1.1,
+      h: 0.77,
       color: this.COLOR_WHITE,
-      fontFace: "Segoe UI Semibold",
+      fontFace: "Segoe UI",
       fontSize: 16,
       align: "center",
       fill: { color: this.COLOR_BOX_BACKGROUND },
-      line: { color: "FFFFFF", width: 0.5 },
+      line: { color: "FFFFFF", width: 1 },
     });
 
     slide.addText(project.ProjectCustomerName, {
       shape: this.pptx.shapes.RECTANGLE,
       autoFit: true,
       y: 0.13,
-      x: 1.2,
+      x: 1.3,
       w: 5.4,
       h: 0.6,
       color: this.COLOR_WHITE,
       fontFace: "Segoe UI Semibold",
+      fontSize: 24,
       align: "left",
       valign: "top",
     });
 
     slide.addText("Business Impact Overview", {
       shape: this.pptx.shapes.RECTANGLE,
-      y: 0.6,
-      x: 1.2,
+      y: 0.55,
+      x: 1.3,
       w: 2.5,
       h: 0.2,
       color: "00B0F0",
@@ -94,16 +96,16 @@ class StoryPowerPoint {
     });
     slide.addImage({
       path: "img/quotes.png",
-      y: 0.13,
-      x: 6.65,
-      w: 0.25,
-      h: 0.25,
+      y: 0.18,
+      x: 6.7,
+      w: 0.35,
+      h: 0.34,
     });
 
     slide.addText("<Insert customer quote here>", {
       shape: this.pptx.shapes.RECTANGLE,
-      y: 0.13,
-      x: 6.85,
+      y: 0.21,
+      x: 7,
       w: 5.5,
       h: 0.8,
       color: this.COLOR_WHITE,
@@ -116,8 +118,8 @@ class StoryPowerPoint {
 
     slide.addText("~Name/Role/Company", {
       shape: this.pptx.shapes.RECTANGLE,
-      y: 0.7,
-      x: 10.5,
+      y: 0.65,
+      x: 10.85,
       w: 2,
       h: 0.2,
       color: this.COLOR_WHITE,
@@ -129,9 +131,9 @@ class StoryPowerPoint {
   }
 
   addNotesHeaders(slide, project) {
-    slide.addText("Customer Overview and Objective", {
+    slide.addText(" Customer Overview and Objective", {
       shape: this.pptx.shapes.RECTANGLE,
-      y: 1.1,
+      y: 1,
       x: 0.12,
       w: 3.49,
       h: 0.4,
@@ -143,10 +145,10 @@ class StoryPowerPoint {
       line: { color: "FFFFFF", width: 0.5 },
     });
 
-    slide.addText("Azure Solution Overview", {
+    slide.addText(" Azure Solution Overview", {
       shape: this.pptx.shapes.RECTANGLE,
       autoFit: false,
-      y: 1.1,
+      y: 1,
       x: 3.71,
       w: 4.7,
       h: 0.4,
@@ -158,10 +160,10 @@ class StoryPowerPoint {
       align: "left",
     });
 
-    slide.addText("Business Results and Impact", {
+    slide.addText(" Business Results and Impact", {
       shape: this.pptx.shapes.RECTANGLE,
       autoFit: false,
-      y: 1.1,
+      y: 1,
       x: 8.51,
       w: 4.7,
       h: 0.4,
@@ -176,44 +178,46 @@ class StoryPowerPoint {
 
   addNotesBodies(slide, project) {
     // notes body
-    var top = 1.6;
-    var height = 5;
+    var top = 1.42;
 
     //Customer Overview and Objective
 
     slide.addText(
       [
         {
+          text: "Brief “About” the customer (who they are, what their business/mission is)",
+          options: { italic: true, bullet: false, breakLine: true, fontSize: 11 },
+        },        {
           text: "What was the customer’s objective?",
-          options: { bullet: { indent: 15 } },
+          options: { bullet: { indent: 10 } },
         },
         {
-          text: "How did this fit in to their cloud strategy?",
-          options: { bullet: { indent: 15 } },
+          text: "How did this fit into their cloud strategy?",
+          options: { bullet: { indent: 10 } },
         },
         {
           text: "Business drivers/justification",
-          options: { bullet: { indent: 15 } },
+          options: { bullet: { indent: 10 } },
         },
         {
           text:
             "Ideal customer outcome - How would this improve their daily/weekly/monthly business functions",
-          options: { bullet: { indent: 15 } },
+          options: { bullet: { indent: 10 } },
         },
         {
           text: "If AMP, how large was their estate?",
-          options: { bullet: { indent: 15 } },
+          options: { bullet: { indent: 10 } },
         },
         {
           text: "#VMs/DBs/Users migrated",
-          options: { bullet: { indent: 15 }, indentLevel: 1 },
+          options: { bullet: { indent: 10 }, indentLevel: 2 },
         },
       ],
       {
         y: top,
         x: 0.12,
         w: 3.49,
-        h: 3.6,
+        h: 3.7,
         shrinkText: true,
         fill: this.COLOR_BOX_BACKGROUND,
         color: this.COLOR_WHITE,
@@ -228,27 +232,31 @@ class StoryPowerPoint {
       [
         {
           text: "What were the key components of the delivery?",
-          options: { bullet: { indent: 15 } },
+          options: { bullet: { indent: 10 } },
         },
         {
           text: "Working Sessions, Architecture Design Review, etc…",
-          options: { bullet: { indent: 15 }, indentLevel: 1 },
+          options: { bullet: { indent: 10 }, indentLevel: 2 },
         },
         {
           text: "What was implemented to meet customer’s objective?",
-          options: { bullet: { indent: 15 } },
+          options: { bullet: { indent: 10 } },
         },
         {
           text:
             "Please note specific products and services used, but refrain from simply a list",
-          options: { bullet: { indent: 15 }, indentLevel: 1 },
+          options: { bullet: { indent: 10 }, indentLevel: 2 },
+        },
+        {
+          text: "Were there any technical risks or challenges that occurred and how were they resolved?",
+          options: { bullet: { indent: 10 } },
         },
       ],
       {
         y: top,
         x: 3.71,
+        h: 2.8,
         w: 4.7,
-        h: 2.6,
         shrinkText: true,
         fill: this.COLOR_BOX_BACKGROUND,
         color: this.COLOR_WHITE,
@@ -260,7 +268,7 @@ class StoryPowerPoint {
 
     slide.addImage({
       path: "img/acrchart.png",
-      y: 4.28,
+      y: 4.3,
       x: 3.71,
       h: 2.32,
       w: 4.7,
@@ -269,44 +277,18 @@ class StoryPowerPoint {
     slide.addText(
       [
         {
-          text: "INSTRUCTIONS FOR ACR CHART",
+          text: "SPOKE PM:",
           options: { bold: true, fontSize: 10, align: "center" },
         },
         {
           text:
             "Step 1: Turn on story flag in Ceres, choose success or learning.\n",
         },
-        { text: "Step 2: data propagates (takes a few hours)" },
+        { text: 
+            "Step 2: Provide the customer TPID here -> #########\n" },
         {
           text:
-            "Step 3: Hub story PM or project PM can scroll, select customer and snip the ACR graph from the ",
-          options: { breakLine: false },
-        },
-        {
-          text: "Story PBI",
-          options: {
-            hyperlink: {
-              url:
-                "https://msit.powerbi.com/groups/me/reports/2a4f3cc3-cd30-48fc-b043-24dfc294196a/ReportSection",
-              tooltip: "FTA Story PBI",
-            },
-            breakLine: false,
-          },
-        },
-        {
-          text:
-            ". If unmanaged you may show no $ and will need to gather from - ",
-          options: { breakLine: false },
-        },
-        {
-          text: "C+AI customer portal",
-          options: {
-            hyperlink: {
-              url: "https://cecustomers.microsoftonline.com/",
-              tooltip: "C+AI customer portal",
-            },
-            breakLine: false,
-          },
+            "Once the story is ready for publishing the Hub PM will add the waterfall ACR graph from Customer PBI",
         },
       ],
       {
@@ -339,20 +321,20 @@ class StoryPowerPoint {
           },
         },
         {
-          text: "How did we directly impact the customer?\n",
-          options: { bullet: { indent: 15 } },
+          text: "Direct impact towards customer desired outcomes?\n",
+          options: { bullet: { indent: 10 } },
         },
         {
           text: "Was there a reduction in time/cost/effort as a result?\n",
-          options: { bullet: { indent: 15 } },
+          options: { bullet: { indent: 10 } },
         },
         {
           text: "Was this an ACA win for Microsoft?\n",
-          options: { bullet: { indent: 15 } },
+          options: { bullet: { indent: 10 } },
         },
         {
           text: "ACR pre-FTA involvement, during, and post",
-          options: { bullet: { indent: 15 } },
+          options: { bullet: { indent: 10 } },
         },
       ],
       {
@@ -360,9 +342,10 @@ class StoryPowerPoint {
         y: top,
         x: 8.51,
         w: 4.7,
-        h: height,
+        h: 5.2,
         shrinkText: true,
         fontFace: "Segoe UI",
+        fontSize: 11,
         color: "FFFFFF",
         valign: "top",
         align: "left",
@@ -384,25 +367,26 @@ class StoryPowerPoint {
         },
         {
           text: "What specific product feedback was captured?\n",
-          options: { bullet: { indent: 15 } },
+          options: { bullet: { indent: 10 } },
         },
         {
           text: "What were the deltas in FTA NPS/NSAT?\n",
-          options: { bullet: { indent: 15 } },
+          options: { bullet: { indent: 10 } },
         },
         {
           text: "What challenges were encountered and how were they overcome?",
-          options: { bullet: { indent: 15 } },
+          options: { bullet: { indent: 10 } },
         },
       ],
       {
         autoFit: false,
-        y: 3,
+        y: 2.7,
         x: 8.51,
         w: 4.7,
         h: 2,
         shrinkText: true,
         fontFace: "Segoe UI",
+        fontSize: 11,
         color: "FFFFFF",
         valign: "top",
         align: "left",
@@ -424,25 +408,26 @@ class StoryPowerPoint {
         },
         {
           text: "What is next for the customer?\n",
-          options: { bullet: { indent: 15 } },
+          options: { bullet: { indent: 10 } },
         },
         {
           text: "Any optimization/tuning efforts planned?\n",
-          options: { bullet: { indent: 15 } },
+          options: { bullet: { indent: 10 } },
         },
         {
           text: "Are there any other initiatives FTA can assist with?",
-          options: { bullet: { indent: 15 } },
+          options: { bullet: { indent: 10 } },
         },
       ],
       {
         autoFit: false,
-        y: 4.4,
+        y: 4,
         x: 8.51,
         w: 4.7,
         h: 2,
         shrinkText: true,
         fontFace: "Segoe UI",
+        fontSize: 11,
         color: "FFFFFF",
         valign: "top",
         align: "left",
@@ -454,10 +439,10 @@ class StoryPowerPoint {
     slide.addText("Collaborators​\n", {
       shape: this.pptx.shapes.RECTANGLE,
       autoFit: false,
-      y: 5.28,
+      y: 5.2,
       x: 0.12,
       w: 3.49,
-      h: 1.32,
+      h: 1.41,
       fill: this.COLOR_BOX_BACKGROUND,
       color: "00B0F0",
       fontFace: "Segoe UI",
@@ -555,16 +540,17 @@ class StoryPowerPoint {
 
   addFooters(slide, project) {
     // footer
-    var footerY = 6.75;
-    var footerH = 0.75;
-    var imageH = 0.4;
-    var imageW = 0.4;
+    var footerY = 6.7;
+    var footerTxtY = 6.72;
+    var footerH = 0.6;
+    var imageH = 0.6;
+    var imageW = 0.6;
 
     var startDate = dateFormat(project.StartDate, "yyyy-mm-dd");
     var endDate = dateFormat(project.EndDate, "yyyy-mm-dd");
 
-    // footer wrapper and MS Confidential
-    slide.addText("MICROSOFT CONFIDENTIAL - Internal Only", {
+    // footer wrapper
+    slide.addText(" ", {
       shape: this.pptx.shapes.RECTANGLE,
       y: footerY,
       x: 0.12,
@@ -578,11 +564,12 @@ class StoryPowerPoint {
       valign: "bottom",
     });
 
+
     //Customer Location
     slide.addImage({
       path: "img/location.png",
-      y: 6.8,
-      x: 0.19,
+      y: footerY,
+      x: 0.2,
       h: imageH,
       w: imageW,
     });
@@ -593,8 +580,8 @@ class StoryPowerPoint {
         { text: project.PhysicalLocation, options: { bold: false } },
       ],
       {
-        y: footerY,
-        x: 0.65,
+        y: footerTxtY,
+        x: 0.76,
         h: footerH,
         w: 2.2,
         valign: "top",
@@ -606,7 +593,7 @@ class StoryPowerPoint {
 
     slide.addImage({
       path: "img/duration.png",
-      y: 6.8,
+      y: footerY,
       x: 3,
       h: imageH,
       w: imageW,
@@ -626,8 +613,8 @@ class StoryPowerPoint {
         },
       ],
       {
-        y: footerY,
-        x: 3.46,
+        y: footerTxtY,
+        x: 3.56,
         h: footerH,
         w: 4.5,
         valign: "top",
@@ -639,8 +626,8 @@ class StoryPowerPoint {
 
     slide.addImage({
       path: "img/industry.png",
-      y: 6.8,
-      x: 8.04,
+      y: footerY,
+      x: 7.3,
       h: imageH,
       w: imageW,
     });
@@ -651,10 +638,10 @@ class StoryPowerPoint {
         { text: project.QualifiedIndustry, options: { bold: false } },
       ],
       {
-        y: footerY,
-        x: 8.5,
+        y: footerTxtY,
+        x: 7.86,
         h: footerH,
-        w: 2.09,
+        w: 2.59,
         valign: "top",
         fontFace: "Segoe UI",
         fontSize: 11,
@@ -664,8 +651,8 @@ class StoryPowerPoint {
 
     slide.addImage({
       path: "img/segment.png",
-      y: 6.8,
-      x: 10.63,
+      y: footerY,
+      x: 10.2,
       h: imageH,
       w: imageW,
     });
@@ -676,17 +663,39 @@ class StoryPowerPoint {
         { text: project.QualifiedSegment, options: { bold: false } },
       ],
       {
-        y: footerY,
-        x: 11.09,
+        y: footerTxtY,
+        x: 10.76,
         h: footerH,
-        w: 1.79,
+        w: 2.3,
         valign: "top",
         fontFace: "Segoe UI",
         fontSize: 11,
         color: "00B0F0",
       }
     );
+
+        // MS Confidential
+
+        slide.addText(
+          [
+            {text: "MICROSOFT CONFIDENTIAL - INTERNAL ONLY",},
+          ],
+          {
+            autoFit: false,
+            y: 7.32,
+            x: 0,
+            w: 13.3,
+            h: .22,
+            fontFace: "Segoe UI",
+            fontSize: 11,
+            color: "A6A6A6",
+            valign: "bottom",
+            align: "center",
+          }
+        );
+
   }
+
 
   dateFromUtc(utc) {
     //Preconditions
