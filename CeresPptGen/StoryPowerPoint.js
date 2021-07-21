@@ -29,7 +29,7 @@ class StoryPowerPoint {
 
     var today = new Date().toISOString();
     today = today.replace(new RegExp(":", "g"), "-");
-    this.filename = project.ProjectCustomerName.replace(" ", "-") + "-" + today + ".pptx";
+    this.filename = project.ProjectCustomerName.replace(" ", "-") + "-BusImpactOverview" + "-" + today + ".pptx";
   
   }
 
