@@ -1,7 +1,7 @@
 let PptxGenJS = require("pptxgenjs");
 var dateFormat = require("dateformat");
 
-class StoryPowerPoint {
+class archoverview {
   constructor(project) {
     this.project = project;
     this.pptx = new PptxGenJS();
@@ -354,5 +354,5 @@ class StoryPowerPoint {
 }
 
 module.exports = {
-  StoryPowerPoint: StoryPowerPoint,
+  archoverview: archoverview,
 };

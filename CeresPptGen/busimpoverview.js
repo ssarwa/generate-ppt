@@ -1,7 +1,7 @@
 let PptxGenJS = require("pptxgenjs");
 var dateFormat = require("dateformat");
 
-class StoryPowerPoint {
+class busimpoverview {
   constructor(project) {
     this.project = project;
     this.pptx = new PptxGenJS();
@@ -667,5 +667,5 @@ class StoryPowerPoint {
 }
 
 module.exports = {
-  StoryPowerPoint: StoryPowerPoint,
+  busimpoverview: busimpoverview,
 };

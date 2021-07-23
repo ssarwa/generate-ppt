@@ -32,5 +32,6 @@
     "ServerCount": "4",
     "DatabaseCount": "1",
     "AzureServerCount": "4",
-    "PartnerMPNID": null
+    "PartnerMPNID": null,
+    "StoryType": "AmpCXStory"
   }
