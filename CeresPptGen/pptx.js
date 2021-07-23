@@ -48,7 +48,7 @@ async function generatePptx(context, req) {
     {
       storyPowerPoint = new ampcxstory(project);
     }
-    else if(project.StoryType == 'Business Overview')
+    else if(project.StoryType == 'Business Impact Overview')
     {
       storyPowerPoint = new busimpoverview(project);
     }
@@ -56,7 +56,7 @@ async function generatePptx(context, req) {
     {
       storyPowerPoint = new archoverview(project);
     }
-    else if(project.StoryType == 'Retrospective')
+    else if(project.StoryType == 'Retrospective View')
     {
       storyPowerPoint = new retrospective(project);
     }
