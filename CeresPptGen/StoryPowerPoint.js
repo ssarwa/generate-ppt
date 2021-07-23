@@ -29,7 +29,7 @@ class StoryPowerPoint {
 
     var today = new Date().toISOString();
     today = today.replace(new RegExp(":", "g"), "-");
-    this.filename = project.ProjectCustomerName.replace(" ", "-") + "-" + today + ".pptx";
+    this.filename = project.ProjectCustomerName.replace(" ", "-") + "-BusImpactOverview" + "-" + today + ".pptx";
   
   }
 
@@ -42,7 +42,7 @@ class StoryPowerPoint {
     this.addNotesBodies(slide, this.project);
     this.addFooters(slide, this.project);
     slide.addNotes(
-      '**Intended Audience** - Pillar reviews, Account Teams, FTA LT – This is to be part of our internal Flipbook.\nThis slide should ALWAYS be in place for any customer story. The following Technical slides may or may not be required, but this Business Impact Overview is always the starting point for any customer story being triggered.\n\nThe Technical slides to follow may be used to add context for various technical audiences. Several combinations of the Technical slides may be used to cater your story to the target audience. If the PG prefers to see buckets with challenges and associated learnings and impact, the final slide is this PPT may be ideal. If some prefers a higher-lever technical overview, then the first technical slide option would be better suited.\n\nCustomer Overview and Objective\nThis section needs to outline who the customer is, the customer’s objective, the "WHY" .. Why were they pursuing this change, and what was the ideal outcome? Tell a brief story around the Why and What – you should be able to pull a lot of this content from the Project Overview in Ceres or your scoping notes prior to project creation.\n\nAzure Solution Overview\nWork with your FTA Engineer to populate this section if you are unsure. Provide a high-level overview of the solution we helped them implement, as well as key services and components of the FTA delivery (ie, Governance discussions, Arch Design Review, over-the-shoulder working sessions, etc…)'
+      '**Intended Audience** - Pillar reviews, Account Teams, FTA LT – This is to be part of our internal Flipbook.\nThis slide should ALWAYS be in place for any customer story. The following Technical slides may or may not be required, but this Business Impact Overview is always the starting point for any customer story being triggered.\n\nThe Technical slides to follow may be used to add context for various technical audiences. Several combinations of the Technical slides may be used to cater your story to the target audience. If the PG prefers to see buckets with challenges and associated learnings and impact, the final slide is this PPT may be ideal. If some prefers a higher-lever technical overview, then the first technical slide option would be better suited.\n\nCustomer Overview and Objective\nThis section needs to outline who the customer is, the customer’s objective, the "WHY" .. Why were they pursuing this change, and what was the ideal outcome? Tell a brief story around the Why and What – you should be able to pull a lot of this content from the Project Overview in Ceres or your scoping notes prior to project creation.\n\nAzure Solution Overview\nWork with your FTA Engineer to populate this section if you are unsure. Provide a high-level overview of the solution we helped them implement, as well as key services and components of the FTA delivery (ie, Governance discussions, Arch Design Review, over-the-shoulder working sessions, etc…)\n\nBusiness Results and Impact\nThis is one of the most critical pieces of the Business Impact Overview. Most audiences viewing this are really going to want to know what the Customer Impact was and what it has enabled the customer to do next. Be sure to discuss FTA’s impact in the customer achieving their desired outcomes. There should always be something to tell here in terms of “What’s Next” – maybe they are moving additional machines to Azure, planning modernization efforts over the next 6 months, evaluating supplemental services, etc…'
     );
   }
 
@@ -204,14 +204,6 @@ class StoryPowerPoint {
             "Ideal customer outcome - How would this improve their daily/weekly/monthly business functions",
           options: { bullet: { indent: 10 } },
         },
-        {
-          text: "If AMP, how large was their estate?",
-          options: { bullet: { indent: 10 } },
-        },
-        {
-          text: "#VMs/DBs/Users migrated",
-          options: { bullet: { indent: 10 }, indentLevel: 2 },
-        },
       ],
       {
         y: top,
@@ -310,14 +302,14 @@ class StoryPowerPoint {
     //Business Results and Impact
     slide.addText(
       [
-        {
-          text: "Impact",
+        { text: "Impact",
           options: {
             bold: true,
             fontSize: 12,
             italic: true,
             bullet: false,
             breakLine: true,
+            color: "00B0F0"
           },
         },
         {
@@ -329,11 +321,15 @@ class StoryPowerPoint {
           options: { bullet: { indent: 10 } },
         },
         {
-          text: "Was this an ACA win for Microsoft?\n",
+          text: "Was this an ACA win or other impact for Microsoft?\n",
           options: { bullet: { indent: 10 } },
         },
         {
-          text: "ACR pre-FTA involvement, during, and post",
+          text: "ACR pre-FTA involvement, during, and post\n",
+          options: { bullet: { indent: 10 } },
+        },
+        {
+          text: "What were the deltas in FTA NPS/NSAT?",
           options: { bullet: { indent: 10 } },
         },
       ],
@@ -363,18 +359,23 @@ class StoryPowerPoint {
             italic: true,
             bullet: false,
             breakLine: true,
+            color: "00B0F0"
           },
         },
         {
-          text: "What specific product feedback was captured?\n",
+          text: "What challenges were encountered and how were they overcome?\n",
           options: { bullet: { indent: 10 } },
         },
         {
-          text: "What were the deltas in FTA NPS/NSAT?\n",
+          text: "What learnings would you apply to future projects?\n",
           options: { bullet: { indent: 10 } },
         },
         {
-          text: "What challenges were encountered and how were they overcome?",
+          text: "What worked well?  What didn’t?\n",
+          options: { bullet: { indent: 10 } },
+        },
+        {
+          text: "What specific product feedback was captured?",
           options: { bullet: { indent: 10 } },
         },
       ],
@@ -404,6 +405,7 @@ class StoryPowerPoint {
             italic: true,
             bullet: false,
             breakLine: true,
+            color: "00B0F0"
           },
         },
         {
@@ -436,7 +438,17 @@ class StoryPowerPoint {
     );
 
     //Collaborators
-    slide.addText("Collaborators​\n", {
+    slide.addText(
+      [
+        { text: "Collaborators\n", options: { bold: true, fontSize: 12, color: "00B0F0", italic: true, } },
+        { text: "FastTrack for Azure: ", options: { bold: true } },
+        { text: "Name (Role)\n", options: { bold: false } },
+        { text: "Field: ", options: { bold: true } },
+        { text: "Name (Role)\n", options: { bold: false } },
+        { text: "Partner: ", options: { bold: true } },
+        { text: "Name\n", options: { bold: false } },
+      ],
+      {
       shape: this.pptx.shapes.RECTANGLE,
       autoFit: false,
       y: 5.2,
@@ -444,112 +456,30 @@ class StoryPowerPoint {
       w: 3.49,
       h: 1.41,
       fill: this.COLOR_BOX_BACKGROUND,
-      color: "00B0F0",
       fontFace: "Segoe UI",
-      fontSize: 12,
+      fontSize: 9,
+      color: "FFFFFF",
       align: "left",
-      italic: true,
       valign: "top",
     });
 
-    slide.addText(
-      [
-        { text: "FastTrack for Azure: ", options: { bold: true } },
-        { text: "Name (Role), Name (Role)", options: { bold: false } },
-      ],
-      {
-        y: 5.55,
-        x: 0.12,
-        w: 3.49,
-        h: 0.2,
-        shrinkText: true,
-        fontFace: "Segoe UI",
-        fontSize: 9,
-        color: "FFFFFF",
-      }
-    );
-
-    slide.addText(
-      [
-        { text: "Field: ", options: { bold: true } },
-        { text: "Name (Role), Name (Role)", options: { bold: false } },
-      ],
-      {
-        y: 5.7,
-        x: 0.12,
-        w: 3.49,
-        h: 0.2,
-        shrinkText: true,
-        fontFace: "Segoe UI",
-        fontSize: 9,
-        color: "FFFFFF",
-      }
-    );
-
-    slide.addText(
-      [
-        { text: "EPM: ", options: { bold: true } },
-        { text: "AMP, remove if N/A", options: { bold: false } },
-      ],
-      {
-        y: 5.85,
-        x: 0.12,
-        w: 3.49,
-        h: 0.2,
-        shrinkText: true,
-        fontFace: "Segoe UI",
-        fontSize: 9,
-        color: "FFFFFF",
-      }
-    );
-
-    slide.addText(
-      [
-        { text: "Skilling: ", options: { bold: true } },
-        { text: "AMP, remove if N/A", options: { bold: false } },
-      ],
-      {
-        y: 6,
-        x: 0.12,
-        w: 3.49,
-        h: 0.2,
-        shrinkText: true,
-        fontFace: "Segoe UI",
-        fontSize: 9,
-        color: "FFFFFF",
-      }
-    );
-
-    slide.addText(
-      [
-        { text: "Partner: ", options: { bold: true } },
-        { text: "Indicate N/A if so", options: { bold: false } },
-      ],
-      {
-        y: 6.15,
-        x: 0.12,
-        w: 3.49,
-        h: 0.2,
-        shrinkText: true,
-        fontFace: "Segoe UI",
-        fontSize: 9,
-        color: "FFFFFF",
-      }
-    );
   }
 
-  addFooters(slide, project) {
+
     // footer
+
+  addFooters(slide, project) {
     var footerY = 6.7;
     var footerTxtY = 6.72;
     var footerH = 0.6;
-    var imageH = 0.6;
-    var imageW = 0.6;
+    var imageH = 0.5;
+    var imageW = 0.5;
 
     var startDate = dateFormat(project.StartDate, "yyyy-mm-dd");
     var endDate = dateFormat(project.EndDate, "yyyy-mm-dd");
 
     // footer wrapper
+
     slide.addText(" ", {
       shape: this.pptx.shapes.RECTANGLE,
       y: footerY,
@@ -564,12 +494,12 @@ class StoryPowerPoint {
       valign: "bottom",
     });
 
-
     //Customer Location
+
     slide.addImage({
       path: "img/location.png",
       y: footerY,
-      x: 0.2,
+      x: 0.16,
       h: imageH,
       w: imageW,
     });
@@ -581,9 +511,9 @@ class StoryPowerPoint {
       ],
       {
         y: footerTxtY,
-        x: 0.76,
+        x: 0.61,
         h: footerH,
-        w: 2.2,
+        w: 1.95,
         valign: "top",
         fontFace: "Segoe UI",
         fontSize: 11,
@@ -591,10 +521,68 @@ class StoryPowerPoint {
       }
     );
 
+    //Customer Industry & Segment
+
+    slide.addImage({
+      path: "img/industry.png",
+      y: footerY,
+      x: 2.5,
+      h: imageH,
+      w: imageW,
+    });
+
+    slide.addText(
+      [
+        { text: "Customer Industry: ", options: { bold: true } },
+        { text: project.QualifiedIndustry + "\n", options: { bold: false } },
+        { text: "Customer Segment: ", options: { bold: true } },
+        { text: project.QualifiedSegment, options: { bold: false } },
+      ],
+      {
+        y: footerTxtY,
+        x: 2.95,
+        h: footerH,
+        w: 3.6,
+        valign: "top",
+        fontFace: "Segoe UI",
+        fontSize: 11,
+        color: "00B0F0",
+      }
+    );
+
+    //Project Duration
+
     slide.addImage({
       path: "img/duration.png",
       y: footerY,
-      x: 3,
+      x: 6.54,
+      h: imageH,
+      w: imageW,
+    });
+
+    slide.addText(
+      [
+        { text: "Project Duration: \n", options: { bold: true } },
+        { text: startDate + " – " + endDate, options: { bold: false } },
+      ],
+      {
+        y: footerTxtY,
+        x: 6.99,
+        h: footerH,
+        w: 1.95,
+        valign: "top",
+        fontFace: "Segoe UI",
+        fontSize: 11,
+        color: "00B0F0",
+      }
+    );
+
+    //Customer Solution & Workload Category
+
+    slide.addImage({
+      path: "img/solution.png",
+      y: footerY,
+      x: 8.88,
       h: imageH,
       w: imageW,
     });
@@ -602,21 +590,15 @@ class StoryPowerPoint {
     slide.addText(
       [
         { text: "Customer Solution: ", options: { bold: true } },
-        {
-          text: project.CustomerSolution + "\n",
-          options: { bold: false },
-        },
-        { text: "Project Duration: ", options: { bold: true } },
-        {
-          text: startDate + " – " + endDate,
-          options: { bold: false },
-        },
+        { text: project.CustomerSolution + "\n", options: { bold: false } },
+        { text: "Workload Category: ", options: { bold: true } },
+        { text: "<See comments for Pick list>", options: { bold: false } },
       ],
       {
         y: footerTxtY,
-        x: 3.56,
+        x: 9.33,
         h: footerH,
-        w: 4.5,
+        w: 3.91,
         valign: "top",
         fontFace: "Segoe UI",
         fontSize: 11,
@@ -624,57 +606,7 @@ class StoryPowerPoint {
       }
     );
 
-    slide.addImage({
-      path: "img/industry.png",
-      y: footerY,
-      x: 7.3,
-      h: imageH,
-      w: imageW,
-    });
-
-    slide.addText(
-      [
-        { text: "Customer Industry:\n", options: { bold: true } },
-        { text: project.QualifiedIndustry, options: { bold: false } },
-      ],
-      {
-        y: footerTxtY,
-        x: 7.86,
-        h: footerH,
-        w: 2.59,
-        valign: "top",
-        fontFace: "Segoe UI",
-        fontSize: 11,
-        color: "00B0F0",
-      }
-    );
-
-    slide.addImage({
-      path: "img/segment.png",
-      y: footerY,
-      x: 10.2,
-      h: imageH,
-      w: imageW,
-    });
-
-    slide.addText(
-      [
-        { text: "Customer Segment:\n", options: { bold: true } },
-        { text: project.QualifiedSegment, options: { bold: false } },
-      ],
-      {
-        y: footerTxtY,
-        x: 10.76,
-        h: footerH,
-        w: 2.3,
-        valign: "top",
-        fontFace: "Segoe UI",
-        fontSize: 11,
-        color: "00B0F0",
-      }
-    );
-
-        // MS Confidential
+    // MS Confidential
 
         slide.addText(
           [
