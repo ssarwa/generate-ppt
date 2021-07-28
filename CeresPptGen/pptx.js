@@ -13,6 +13,9 @@ let busimpoverview = businessStory.busimpoverview;
 const retroStory = require("./retrospective");
 let retrospective = retroStory.retrospective;
 
+const sellerSpot = require("./sellerspotlight");
+let sellerspotlight = sellerSpot.sellerspotlight;
+
 const techStory = require("./techoverview");
 let techoverview = techStory.techoverview;
 
@@ -59,6 +62,10 @@ async function generatePptx(context, req) {
     else if(project.StoryType == 'Retrospective View')
     {
       storyPowerPoint = new retrospective(project);
+    }
+    else if(project.StoryType == 'Seller Spotlight')
+    {
+      storyPowerPoint = new sellerspotlight(project);
     }
     else if(project.StoryType == 'Technical Overview')
     {

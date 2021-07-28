@@ -104,30 +104,25 @@ class retrospective {
       altText: "Decorative image of Quotation Marks",
     });
 
-    slide.addText("<Insert customer quote here>", {
+    slide.addText(
+      [
+        {
+          text: "<Insert customer quote here>\n\n",
+          options: { align: "left", valign: "top" },
+        },        {
+          text: "~Name/Role/Company",
+          options: { align: "right", valign: "bottom" },
+        },
+      ], 
+    {
       shape: this.pptx.shapes.RECTANGLE,
       y: 0.21,
       x: 7,
-      w: 5.5,
-      h: 0.8,
+      w: 6,
+      h: .75,
       color: this.COLOR_WHITE,
       fontFace: "Segoe UI",
-      fontSize: 12,
-      align: "left",
-      valign: "top",
-      italic: true,
-    });
-
-    slide.addText("~Name/Role/Company", {
-      shape: this.pptx.shapes.RECTANGLE,
-      y: 0.65,
-      x: 10.85,
-      w: 2,
-      h: 0.2,
-      color: this.COLOR_WHITE,
-      fontFace: "Segoe UI",
-      fontSize: 12,
-      align: "left",
+      fontSize: 11,
       italic: true,
     });
   }
@@ -444,8 +439,8 @@ class retrospective {
       var imageH = 0.5;
       var imageW = 0.5;
   
-      var startDate = dateFormat(project.StartDate, "yyyy-mm-dd");
-      var endDate = dateFormat(project.EndDate, "yyyy-mm-dd");
+      var startDate = dateFormat(project.StartDate, "mmm-yyyy");
+      var endDate = dateFormat(project.EndDate, "mmm-yyyy");
   
       // footer wrapper
   
