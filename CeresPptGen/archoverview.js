@@ -162,8 +162,8 @@ class archoverview {
       var imageH = 0.5;
       var imageW = 0.5;
   
-      var startDate = dateFormat(project.StartDate, "yyyy-mm-dd");
-      var endDate = dateFormat(project.EndDate, "yyyy-mm-dd");
+      var startDate = dateFormat(project.StartDate, "mmm-yyyy");
+      var endDate = dateFormat(project.EndDate, "mmm-yyyy");
   
       // footer wrapper
   
@@ -314,43 +314,6 @@ class archoverview {
           );
   
     }
-  
-
-  dateFromUtc(utc) {
-    //Preconditions
-    if (
-      !utc ||
-      utc.length < 13 ||
-      !Number.isInteger(parseInt(utc.substr(0, 4)))
-    ) {
-      //console.log("DateUtil.UTCtoMedium: utc parameter invalid: " + utc);
-      return "";
-    }
-    //avoid "0001-01-01T08:00:00+00:00"
-    if (utc.substr(0, 4) < "2000") return "";
-
-    var year = utc.substr(0, 4);
-    var month = parseInt(utc.substr(5, 2)) - 1; //Months are 0-11
-    var day = utc.substr(8, 2);
-    var hours = parseInt(utc.substr(11, 2));
-    if (hours > 11) day++; //goes to next day, if it's more than days in the month, date object adjusts accordingly
-    var dateObj = new Date(year, month, day);
-    return dateObj;
-  }
-
-  daysBetween(date1, date2) {
-    //Get 1 day in milliseconds
-    var one_day = 1000 * 60 * 60 * 24;
-    // Convert both dates to milliseconds
-    var date1_ms = date1.getTime();
-    var date2_ms = date2.getTime();
-
-    // Calculate the difference in milliseconds
-    var difference_ms = date2_ms - date1_ms;
-
-    // Convert back to days and return
-    return Math.round(difference_ms / one_day);
-  }
 }
 
 module.exports = {
